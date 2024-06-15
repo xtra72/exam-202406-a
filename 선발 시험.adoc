@@ -19,7 +19,7 @@
 == 문제 1. arraycopy를 구현 하라.(10)
 
 System.arraycopy와 동일한 함수를 만들고, 다음의 코드가 정상적으로 수행되는지 확인해 보자. +
-*단, arraycopy내에서는 외부 함수 호출이나, 지역 변수 사용이 없어야 한다.*
+*단, arraycopy내에서는 외부 함수 호출이나, 추가 배열 사용이 없어야 한다.*
 
 [source,java]
 ----
@@ -27,7 +27,7 @@ package example;
 
 import java.util.Arrays;
 
-public class TestArrayCopy {
+public class Exam1 {
     static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
         //...
     }
@@ -278,6 +278,7 @@ list에 제거할 요소가 없습니다.
 ** 테스트에서 사용되는 데이터는 학생 정보 클래스 (Student class)
 *** 학번, 이름
 *** 학번 기준 정렬
+* 재정의 함수에서 파라메터가 다를 경우 컴파일러 오류가 나지 않더라도 감점
 
 [source,java]
 ----
@@ -360,6 +361,7 @@ interface Shape3D {
 * 평면상에 그려지는 원을 나타낸다.
 * 생성시 반지름이 주어져야 한다.
 * 원의 면적은 Math.PI * Math.pow(r,2)
+* toString을 재정의하지 않는다.
 
 [source,java]
 ----
@@ -372,6 +374,7 @@ class Circle /*...*/ {
 
 * 평면상에 그려지는 사각형을 나타낸다.
 * 생성시 폭과 높이가 주어져야 한다.
+* toString을 재정의하지 않는다.
 
 [source,java]
 ----
@@ -385,6 +388,7 @@ class Rectangle /*...*/ {
 * 공간상에 만들어지는 구를 나타낸다.
 * 생성시 구의 반지름이 주어져야 한다.
 * 구의 부피는 4/3 * Math.PI * Math.pow(r,3)
+* toString을 재정의하지 않는다.
 
 [source,java]
 ----
@@ -397,6 +401,7 @@ class Ball /* ... */ {
 
 * 공간상에 만들어지는 박스를 나타낸다.
 * 생성시 폭, 높이, 깊이가 주어져야 한다.
+* toString을 재정의하지 않는다.
 
 [source,java]
 ----
@@ -425,7 +430,7 @@ class World {
         shapes[3] = box;
 
         // 6-3 도형 종류를 출력하라(10)
-        System.out.println(/* ... */);
+        System.out.println(Arrays.toString(shapes));
 
         // 6-4 2차원 도형만 출력하라(20)
         System.out.print("2차원 도형은 ");
@@ -440,6 +445,7 @@ class World {
 
         // 6-5 3차원 도형만 출력하라(30)
         // 주석 처리된 부분에만 코드를 추가한다.
+        // Java Stream을 이용해 구현한다.
         Object[] shape3ds = /* ... */;
         System.out.println(/* ... */);
     }
