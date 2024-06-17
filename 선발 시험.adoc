@@ -151,6 +151,8 @@ class OrderedLinkedList implements List {
         list.removeFirst();
         System.out.println("getFirst : " + list.getFirst());
         list.removeFirst();
+        System.out.println("getFirst : " + list.getFirst());
+        list.removeFirst();
         System.out.println("isEmpty : " + list.isEmpty());
     }
 }
