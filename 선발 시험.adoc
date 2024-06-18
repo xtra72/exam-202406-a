@@ -18,8 +18,10 @@
 
 == 문제 1. arraycopy를 구현 하라.(10)
 
-System.arraycopy와 동일한 함수를 만들고, 다음의 코드가 정상적으로 수행되는지 확인해 보자. +
-*단, arraycopy내에서는 외부 함수 호출이나, 추가 배열 사용이 없어야 한다.*
+* System.arraycopy와 동일한 함수를 만들고, 다음의 코드가 정상적으로 수행되는지 확인해 보자.
+** 주어진 인수에 따라 IndexOutOfBoundsException, ArrayStoreException, NullPointerException 등의 exception이 발생할 수 있다.
+* *arraycopy내에서는 외부 함수 호출이나, 추가 배열 사용이 없어야 한다.*
+** 임시 배열을 생성하여 복사 후 dest 배열에 복사하지 않는다.
 
 [source,java]
 ----
@@ -90,8 +92,8 @@ Arrays.equals(a, b) = true
 
 == 문제 2. OrderedList class를 구현하라.(30)
 
-OrderedList class는 아래에 정의되어 있는 List interface를 구현한다.
-
+* OrderedList class는 아래에 정의되어 있는 List interface를 구현한다.
++
 [source,java]
 ----
 interface List {
@@ -101,9 +103,8 @@ interface List {
     public boolean isEmpty();
 }
 ----
-
-OrderedLinkedList class를 다음을 참고하여 정의해 보자.
-
+* OrderedLinkedList class를 다음을 참고하여 정의해 보자.
++
 [source,java]
 ----
 class OrderedLinkedList implements List {
@@ -157,9 +158,8 @@ class OrderedLinkedList implements List {
     }
 }
 ----
-
-결과는 아래와 같다.
-
+* 결과는 아래와 같다.
++
 [source,console]
 ----
 isEmpty : true
@@ -172,7 +172,6 @@ getFirst : 10
 getFirst : 12
 isEmpty : true
 ----
-
 * Node class를 Inner class로 정의하여 데이터 관리에 사용한다.
 * 입력되는 값은 오른 차순으로 정렬된다.
 
@@ -181,6 +180,9 @@ isEmpty : true
 * OrderedLinkedList에서와 달리 inner class를 사용하지 않는다.
 * 초기 배열 크기를 갖는다.
 ** 배열 크기는 OrderedArrayList에 넣을 수 있는 요소의 최대수와 동일하다.
+* 요소 삽입시 배열에 저장되어 있는 요소들의 이동을 최소화한다.
+** 리스트내 *배열을 복사하지 않는다*.
+** 배열에 삽입 후 *정렬 함수를 만들어 정렬하지 않는다*.
 
 [source,java]
 ----
@@ -213,7 +215,10 @@ class OrderedArrayList implements List {
 }
 ----
 
-== 문제 4. OrderedArrayList에 더이상의 요소를 추가할 수 없을 경우, RuntimeException을 발생시켜라.(10)
+== 문제 4. 오류 발생시 RuntimeException을 발생 시켜라.(10)
+
+* OrderedArrayList에 더이상의 요소를 추가할 수 없을 경우
+* 비워져 있는 List에서 요소를 꺼내려는 경우
 
 [source,java]
 ----
@@ -326,9 +331,10 @@ class OrderedLinkedList<T extends Comparable<T>> implements List<T> {
 
 **Shape**
 
-* 평면 또는 공간상에서 표현되는 모든 도형을 포함한다.
-* 문자열 출력시 도형의 종류를 출력한다.(클래스 이름)
-* Shape 객체는 생성되지 않는다.
+* 평면 또는 공간상에서 표현되는 **모든 도형을 포함**한다.
+* 문자열 출력시 도형의 종류를 출력한다.
+** **도형의 이름은 클래스 이름과 동일**하다.
+* Shape는 **객체로 생성되지 않는다**.
 
 **Shape2D**
 
